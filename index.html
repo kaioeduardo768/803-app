@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>803 App</title>
+  <meta charset="UTF-8">
+  <title>Deveres da Turma 803</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #22c55e;
+      color: #000;
+      cursor: pointer;
+    }
+    .box {
+      background: #020617;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
-
 <body>
-<h1>803 App</h1>
-<p>Site dos deveres da turma</p>
+
+<h1>📚 Deveres da Turma 803</h1>
+
+<div class="box">
+  <h2>✏️ Atualizar deveres (ADMIN)</h2>
+  <textarea id="inputDever" placeholder="Ex: Matemática - pág 30 exercícios 1 a 5"></textarea>
+  <br>
+  <button onclick="salvarDever()">Salvar dever</button>
+</div>
+
+<div class="box">
+  <h2>📌 Dever atual</h2>
+  <p id="dever"></p>
+</div>
+
+<script>
+  const deverSalvo = localStorage.getItem("dever803");
+  if (deverSalvo) {
+    document.getElementById("dever").innerText = deverSalvo;
+  }
+
+  function salvarDever() {
+    const texto = document.getElementById("inputDever").value;
+    localStorage.setItem("dever803", texto);
+    document.getElementById("dever").innerText = texto;
+    document.getElementById("inputDever").value = "";
+    alert("Dever atualizado com sucesso!");
+  }
+</script>
+
 </body>
 </html>
